@@ -38,3 +38,6 @@ ADD warrior.sh /etc/service/warrior/run
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN curl 'http://localhost:8001/api/settings' -H 'Origin: http://localhost:8001' -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' -H 'Referer: http://localhost:8001/' -H 'X-Requested-With: XMLHttpRequest' -H 'Connection: keep-alive' --data 'downloader=torild&amp;concurrent_items=2&amp;http_username=&amp;http_password=' --compressed
+RUN curl 'http://localhost:8001/api/select-project' -H 'Origin: http://localhost:8001' -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' -H 'Referer: http://localhost:8001/' -H 'X-Requested-With: XMLHttpRequest' -H 'Connection: keep-alive' --data 'project_name=auto' --compressed
